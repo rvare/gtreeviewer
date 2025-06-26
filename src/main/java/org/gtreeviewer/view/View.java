@@ -14,9 +14,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import org.gtreeviewer.view.AboutDialog;
 import org.gtreeviewer.view.DocumentationDialog;
 
-// TODO: Do documentationa and help windows
-// TODO: Temporarily remove other file options and only stick to just opening JSON files.
-// 	Just comment out the code so you don't need to rewrite it.
+// TODO: Add in the file explorer when working on the Model class.
 
 public class View extends JFrame {
 	private JTree tree;
@@ -52,14 +50,14 @@ public class View extends JFrame {
 		this.openFileOption = new JMenuItem("Open");
 		fileMenu.add(this.openFileOption);
 
-		this.saveOption = new JMenuItem("Save");
-		fileMenu.add(this.saveOption);
+		// this.saveOption = new JMenuItem("Save");
+		// fileMenu.add(this.saveOption);
 
-		this.saveAsOption = new JMenuItem("Save As");
-		fileMenu.add(this.saveAsOption);
+		// this.saveAsOption = new JMenuItem("Save As");
+		// fileMenu.add(this.saveAsOption);
 
-		this.exportMenuOption = new JMenuItem("Export");
-		fileMenu.add(this.exportMenuOption);
+		// this.exportMenuOption = new JMenuItem("Export");
+		// fileMenu.add(this.exportMenuOption);
 
 		// Create Help menu and its items
 		JMenu helpMenu = new JMenu("Help");
