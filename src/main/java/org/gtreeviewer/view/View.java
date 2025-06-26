@@ -72,14 +72,16 @@ public class View extends JFrame {
 		// TODO: Make it empty and figure out how to pass its model to the Model class
 		// TODO: How to change the symbols?
 		JTree treeGUI = new JTree();
+		JScrollPane leftScrollPane = new JScrollPane(treeGUI);
 
 		// Right panel for data display
 		JPanel rightPanel = new JPanel();
 		rightPanel.add(new JLabel("Right"));
 		rightPanel.setMinimumSize(new Dimension(400, 500));
+		JScrollPane rightScrollPane = new JScrollPane(rightPanel);
 
 		// Create split pane and add to frame
-		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeGUI, rightPanel);
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftScrollPane, rightScrollPane);
 		splitPane.setOneTouchExpandable(true);
 		splitPane.setDividerLocation(300);
 		this.getContentPane().add(splitPane);
