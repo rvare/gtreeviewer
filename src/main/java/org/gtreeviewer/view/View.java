@@ -11,6 +11,13 @@ import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import org.gtreeviewer.view.AboutDialog;
+import org.gtreeviewer.view.DocumentationDialog;
+
+// TODO: Do documentationa and help windows
+// TODO: Temporarily remove other file options and only stick to just opening JSON files.
+// 	Just comment out the code so you don't need to rewrite it.
+
 public class View extends JFrame {
 	private JTree tree;
 
@@ -58,9 +65,11 @@ public class View extends JFrame {
 		JMenu helpMenu = new JMenu("Help");
 
 		this.docOption = new JMenuItem("Documentation");;
+		this.docOption.addActionListener(new displayDocumentationDialogListener());
 		helpMenu.add(this.docOption);
 
 		this.aboutOption = new JMenuItem("About");
+		this.aboutOption.addActionListener(new displayAboutDialogListener());
 		helpMenu.add(this.aboutOption);
 
 		// Add all menu items to the menu bar and add the menu bar to frame
@@ -90,4 +99,26 @@ public class View extends JFrame {
 		this.setTitle(this.WINDOW_TITLE);
 		this.setSize(this.DEFAULT_WIDTH, this.DEFAULT_HEIGHT);
 	} // End default constructor
+
+	public void displayAboutDialogWindow() {
+		new AboutDialog().setVisible(true);
+	}
+
+	public void displayDocumentationDialog() {
+		new DocumentationDialog().setVisible(true);
+	}
+
+	private class displayAboutDialogListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			displayAboutDialogWindow();
+		}
+	}
+
+	private class displayDocumentationDialogListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			displayDocumentationDialog();
+		}
+	}
 } // End View class
