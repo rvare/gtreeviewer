@@ -26,13 +26,13 @@ public class View extends JFrame {
 	private JMenuItem docOption;
 	private JMenuItem aboutOption;
 
-	private static int DEFAULT_WIDTH = 500;
+	private static int DEFAULT_WIDTH = 700;
 	private static int DEFAULT_HEIGHT = 500;
 	private final static String WINDOW_TITLE = "GTreeViewer";
 	private final static String WINDOW_TITLE_DIRTY = "GTreeViewer *";
 
 	public View() {
-		System.out.println("Init");
+		System.out.println("Init view");
 		// Set default close operation
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -63,32 +63,28 @@ public class View extends JFrame {
 		this.aboutOption = new JMenuItem("About");
 		helpMenu.add(this.aboutOption);
 
-		// Add all menu items to the menu bar
+		// Add all menu items to the menu bar and add the menu bar to frame
 		this.menuBar.add(fileMenu);
 		this.menuBar.add(helpMenu);
+		this.setJMenuBar(this.menuBar);
 
-		// Create panels
-		Dimension minimumSize = new Dimension(100, 50);
-
-		// Left panel for JTree
-		JPanel leftPanel = new JPanel();
-		leftPanel.add(new JLabel("Left"));
-		leftPanel.setMinimumSize(minimumSize);
-		// this.getContentPane().add(BorderLayout.WEST, leftPanel);
+		// Create JTree
+		// TODO: Make it empty and figure out how to pass its model to the Model class
+		// TODO: How to change the symbols?
+		JTree treeGUI = new JTree();
 
 		// Right panel for data display
 		JPanel rightPanel = new JPanel();
 		rightPanel.add(new JLabel("Right"));
-		rightPanel.setMinimumSize(minimumSize);
-		// this.getContentPane().add(BorderLayout.EAST, rightPanel);
+		rightPanel.setMinimumSize(new Dimension(400, 500));
 
-		// Create split pane
-		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, rightPanel);
+		// Create split pane and add to frame
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treeGUI, rightPanel);
 		splitPane.setOneTouchExpandable(true);
-		splitPane.setDividerLocation(250);
+		splitPane.setDividerLocation(300);
 		this.getContentPane().add(splitPane);
 
-		// Create the frame
+		// Finish the frame
 		this.setTitle(this.WINDOW_TITLE);
 		this.setSize(this.DEFAULT_WIDTH, this.DEFAULT_HEIGHT);
 	} // End default constructor
