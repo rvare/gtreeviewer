@@ -3,3 +3,6 @@
 *.jar
 classes/
 target/
+lib/
+*.bat
+test.json
