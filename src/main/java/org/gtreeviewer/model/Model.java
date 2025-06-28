@@ -22,29 +22,14 @@ import org.json.*;
 
 public class Model {
 	private JSONObject jsonObject;
+	private File filePath;
 
 	public Model() {
 		System.out.println("Init model");
-		String jsonContents = null;
-		try {
-			jsonContents = Files.readString(Paths.get("./test.json"));
-			System.out.println(jsonContents);
-			this.jsonObject = new JSONObject(jsonContents);
-		}
-		catch(IOException ioEx) {
-			System.out.println(ioEx.getMessage());
-		}
-		catch(JSONException jsonEx) {
-			System.out.println(jsonEx.getMessage());
-		}
-		catch(Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-		System.out.println(new JSONObject(jsonContents));
 	}
 
 	// Getters
-	public String getAll() { return this.jsonObject.toString(); }
+	public String getJsonObject() { return this.jsonObject.toString(); }
 
 	public Object getFieldValue(String key) {
 		return this.jsonObject.get(key);
@@ -83,21 +68,47 @@ public class Model {
 		this.jsonObject.put(key, value);
 	}
 
-
 	// New operations
-	public void newField(String newKey, String value) { }
+	public void newField(String newKey, String value) {
+		this.jsonObject.put(newKey, value);
+	}
 
-	public void newField(String newKey, int value) { }
+	public void newField(String newKey, int value) {
+		this.jsonObject.put(newKey, value);
+	}
 
-	public void newField(String newKey, float value) { }
+	public void newField(String newKey, float value) {
+		this.jsonObject.put(newKey, value);
+	}
 
-	public void newField(String newKey, boolean value) { }
+	public void newField(String newKey, boolean value) {
+		this.jsonObject.put(newKey, value);
+	}
 
 	// Operations
-	public void openAndLoadJsonFile() { }
+	public void openAndLoadJsonFile(String filePath) {
+		System.out.println("In openAndLoadJsonFile");
+		this.filePath = new File(filePath);
+		String jsonContents = "{}";
+		try {
+			jsonContents = Files.readString(Paths.get("./test.json"));
+			System.out.println(jsonContents);
+			this.jsonObject = new JSONObject(jsonContents);
+		}
+		catch(IOException ioEx) {
+			System.out.println(ioEx.getMessage());
+		}
+		catch(JSONException jsonEx) {
+			System.out.println(jsonEx.getMessage());
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		System.out.println(new JSONObject(jsonContents));
+	}
 
 	public Map<String, Object> createHashMap() {
 		return this.jsonObject.toMap();
 	}
-
 } // End Model class
+

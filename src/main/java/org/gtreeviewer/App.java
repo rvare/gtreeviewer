@@ -12,8 +12,9 @@ public class App
 	public static void main(String[] args)
 	{
 		System.out.println("Test");
+		Model model = new Model();
+		model.openAndLoadJsonFile("../test.json");
 		// View view = new View();
 		// view.setVisible(true);
-		Model model = new Model();
 	}
 }
