@@ -19,7 +19,6 @@ import org.json.*;
 /**
  * Contains program logic.
  */
-
 public class Model {
 	private JSONObject jsonObject;
 	private File filePath;

@@ -2,6 +2,7 @@ package org.gtreeviewer;
 
 import org.gtreeviewer.view.*;
 import org.gtreeviewer.model.*;
+import org.gtreeviewer.controller.*;
 
 /**
  * This file will init all classes.
@@ -14,7 +15,8 @@ public class App
 		System.out.println("Test");
 		Model model = new Model();
 		model.openAndLoadJsonFile("../test.json");
-		// View view = new View();
-		// view.setVisible(true);
+		View view = new View();
+		Controller controller = new Controller(model, view);
+		view.setVisible(true);
 	}
 }

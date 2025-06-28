@@ -16,6 +16,9 @@ import org.gtreeviewer.view.DocumentationDialog;
 
 // TODO: Add in the file explorer when working on the Model class.
 
+/**
+ * Handles GUI
+ */
 public class View extends JFrame {
 	private JTree tree;
 
