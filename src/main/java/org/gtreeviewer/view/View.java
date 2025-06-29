@@ -28,9 +28,9 @@ public class View extends JFrame {
 
 	// Menu bar items
 	private JMenuItem openFileOption;
-	private JMenuItem saveOption;
-	private JMenuItem saveAsOption;
-	private JMenuItem exportMenuOption;
+	// private JMenuItem saveOption;
+	// private JMenuItem saveAsOption;
+	// private JMenuItem exportMenuOption;
 	private JMenuItem docOption;
 	private JMenuItem aboutOption;
 
@@ -53,6 +53,7 @@ public class View extends JFrame {
 		this.openFileOption = new JMenuItem("Open");
 		fileMenu.add(this.openFileOption);
 
+		// The items save, save as, and export are to be left here once we get to implementing them.
 		// this.saveOption = new JMenuItem("Save");
 		// fileMenu.add(this.saveOption);
 
@@ -66,11 +67,9 @@ public class View extends JFrame {
 		JMenu helpMenu = new JMenu("Help");
 
 		this.docOption = new JMenuItem("Documentation");;
-		this.docOption.addActionListener(new displayDocumentationDialogListener());
 		helpMenu.add(this.docOption);
 
 		this.aboutOption = new JMenuItem("About");
-		this.aboutOption.addActionListener(new displayAboutDialogListener());
 		helpMenu.add(this.aboutOption);
 
 		// Add all menu items to the menu bar and add the menu bar to frame
@@ -107,6 +106,18 @@ public class View extends JFrame {
 
 	public void displayDocumentationDialog() {
 		new DocumentationDialog().setVisible(true);
+	}
+
+	public void addOpenFileListener(ActionListener actionListener) {
+		this.openFileOption.addActionListener(actionListener);
+	}
+
+	public void addDisplayAboutDialogListener(ActionListener actionListener) {
+		this.aboutOption.addActionListener(actionListener);
+	}
+
+	public void addDisplayDocumentationDialogListener(ActionListener actionListener) {
+		this.docOption.addActionListener(actionListener);
 	}
 
 	private class displayAboutDialogListener implements ActionListener {

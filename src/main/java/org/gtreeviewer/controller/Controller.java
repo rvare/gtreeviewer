@@ -26,7 +26,11 @@ public class Controller {
 	public Controller(final Model model, final View view) {
 		System.out.println("Contoller constuctor");
 		this.model = model;
+
 		this.view = view;
+		this.view.addOpenFileListener(new menuOpenListener());
+		this.view.addDisplayAboutDialogListener(new DisplayAboutDialogListener());
+		this.view.addDisplayDocumentationDialogListener(new DisplayDocumentationDialogListener());
 	}
 
 	private class menuOpenListener implements ActionListener {
@@ -36,17 +40,19 @@ public class Controller {
 		}
 	}
 
-	private class menuDocumentationItemListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent event) {
-			System.out.println("Doc listener");
-		}
-	}
-
-	private class menuAboutItemListener implements ActionListener {
+	private class DisplayAboutDialogListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent event) {
 			System.out.println("About listener");
+			view.displayAboutDialogWindow();
+		}
+	}
+
+	private class DisplayDocumentationDialogListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			System.out.println("Doc listener");
+			view.displayDocumentationDialog();
 		}
 	}
 } // End Controller class
