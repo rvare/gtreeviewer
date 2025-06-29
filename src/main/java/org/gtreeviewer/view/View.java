@@ -37,9 +37,9 @@ public class View extends JFrame {
 	private static int DEFAULT_WIDTH = 700;
 	private static int DEFAULT_HEIGHT = 500;
 	private final static String WINDOW_TITLE = "GTreeViewer";
-	private final static String WINDOW_TITLE_DIRTY = "GTreeViewer *";
+	// private final static String WINDOW_TITLE_DIRTY = "GTreeViewer *";
 
-	public View() {
+	public View(Hashtable<String, Object> hashTable) {
 		System.out.println("Init view");
 		// Set default close operation
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,7 +80,7 @@ public class View extends JFrame {
 		// Create JTree
 		// TODO: Make it empty and figure out how to pass its model to the Model class
 		// TODO: How to change the symbols?
-		JTree treeGUI = new JTree();
+		JTree treeGUI = new JTree(hashTable);
 		JScrollPane leftScrollPane = new JScrollPane(treeGUI);
 
 		// Right panel for data display
@@ -100,6 +100,12 @@ public class View extends JFrame {
 		this.setSize(this.DEFAULT_WIDTH, this.DEFAULT_HEIGHT);
 	} // End default constructor
 
+	// Setters
+	public void setJtree(Hashtable<String, Object> hashTable) {
+		this.tree = new JTree(hashTable);
+	}
+
+	// Operations
 	public void displayAboutDialogWindow() {
 		new AboutDialog().setVisible(true);
 	}

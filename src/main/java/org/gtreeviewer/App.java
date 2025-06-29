@@ -15,7 +15,7 @@ public class App
 		System.out.println("Test");
 		Model model = new Model();
 		model.openAndLoadJsonFile("../test.json");
-		View view = new View();
+		View view = new View(model.getHashTable());
 		Controller controller = new Controller(model, view);
 		view.setVisible(true);
 	}

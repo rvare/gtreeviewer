@@ -16,12 +16,16 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.json.*;
 
+import org.gtreeviewer.view.View;
+
 /**
  * Contains program logic.
  */
 public class Model {
 	private JSONObject jsonObject;
+	private Hashtable<String, Object> jsonHashTable;
 	private File filePath;
+	private View view;
 
 	public Model() {
 		System.out.println("Init model");
@@ -51,6 +55,14 @@ public class Model {
 	}
 
 	// Setters
+	public void setView(View view) {
+		this.view = view;
+	}
+
+	public void setJTreeModel() {
+		this.view.setJtree(this.createHashTable());
+	}
+
 	public void setField(String key, String value) {
 		this.jsonObject.put(key, value);
 	}
@@ -93,6 +105,13 @@ public class Model {
 			jsonContents = Files.readString(Paths.get("./test.json"));
 			System.out.println(jsonContents);
 			this.jsonObject = new JSONObject(jsonContents);
+			System.out.println("jsonObject");
+			System.out.println(this.jsonObject);
+			HashMap<String, Object> hashMap = new HashMap<String, Object>(this.jsonObject.toMap());
+			System.out.println(hashMap);
+			this.jsonHashTable = new Hashtable(hashMap);
+			System.out.println("jsonHashTable");
+			System.out.println(this.jsonHashTable);
 		}
 		catch(IOException ioEx) {
 			System.out.println(ioEx.getMessage());
@@ -101,13 +120,17 @@ public class Model {
 			System.out.println(jsonEx.getMessage());
 		}
 		catch(Exception ex) {
+			System.out.println("here");
 			System.out.println(ex.getMessage());
 		}
-		System.out.println(new JSONObject(jsonContents));
 	}
 
-	public Map<String, Object> createHashMap() {
-		return this.jsonObject.toMap();
+	public Hashtable<String, Object> getHashTable() {
+		return this.jsonHashTable;
+	}
+
+	public Hashtable<String, Object> createHashTable() {
+		return new Hashtable<String, Object>(this.jsonObject.toMap());
 	}
 } // End Model class
 
