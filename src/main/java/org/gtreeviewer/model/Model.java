@@ -107,9 +107,7 @@ public class Model {
 			this.jsonObject = new JSONObject(jsonContents);
 			System.out.println("jsonObject");
 			System.out.println(this.jsonObject);
-			HashMap<String, Object> hashMap = new HashMap<String, Object>(this.jsonObject.toMap());
-			System.out.println(hashMap);
-			this.jsonHashTable = new Hashtable(hashMap);
+			this.jsonHashTable = new Hashtable<String, Object>(this.jsonObject.toMap());
 			System.out.println("jsonHashTable");
 			System.out.println(this.jsonHashTable);
 		}
